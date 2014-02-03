@@ -1,0 +1,466 @@
+/*
+Your entire stylesheet should be nested in the "html .themed" selector. This
+prevents your theme from accidentally overriding any styles in the Pop editor.
+Also, some javascript libraries (e.g. fancybox) append dom elements directly
+to the body. Add the ".themed" class to those elements and you can style them
+here as well. It's not a great solution, but at least it works!
+*/
+
+@import 'preboot';
+@import 'elements';
+@import '//fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:300,400,700&.css';
+@import 'variables';
+
+#reset > .global-reset();
+
+span.file-extension { behavior: url("@{base-url}/iepngfix/iepngfix.htc") }
+
+.top-color () when (lightness(@background-color) >= 50%) {
+  color: #222;
+}
+.top-color () when (lightness(@background-color) < 50%) {
+  color: #00BEEE;
+}
+
+
+.asset-position-candidate { background: rbga(255,255,255,0.5);}
+body #site {
+	/* background: @background-color; */
+}
+
+	body {
+		font-size:14px;
+		line-height:1.3em;
+		font-family:'Open Sans', sans-serif;
+		font-weight:400;
+		color:@text-color;
+		background: #1F93BB;
+	}
+
+
+	.images a.fancybox { position: relative; /* margin-right:1px; */ }
+
+html .themed {
+  &#pop {
+
+		margin: 0 auto;
+		padding: 0px;
+		text-align: center;
+
+
+  }
+
+}
+
+  	#main-content {
+  		width: 960px;
+			margin:0 auto;
+			text-align: left;
+			padding: 0;
+		}
+
+  	#page {
+      .clearfix();
+  		width: 960px;
+			padding: 0;
+      margin-bottom: 15px;
+		}
+
+    #header-region {
+      .top-color();
+    	.clearfix;  margin:20px 0 0;
+    	.asset-inner { padding: 0; }
+	  	.asset-title { .top-color(); }
+
+		.asset-size-s { width:220px; }
+		.asset-size-l { width:440px; }
+
+    	a { .top-color(); text-decoration: underline; }
+
+    }
+
+  	#top-region {
+  		.clearfix; margin-bottom:10px;
+
+  		.asset { margin-bottom:0;
+
+  		}
+  		.asset-type-imagegroup.asset-size-1 .content a img { border-top:0; padding:0; margin:0; }
+
+  	}
+
+		#middle {
+			.clearfix;
+
+			#middle-region { width:684px; float: left;
+
+				.asset { background:transparent url("@{base-url}/images/asset-bg.png"); margin-bottom:0;
+	  		&.asset-type-imagegroup.asset-size-m {
+	  			background: none transparent;
+	  			.asset-content { background:transparent url("@{base-url}/images/asset-bg.png"); }
+	  		}
+
+	  			/* .asset-inner {padding: 25px;} */
+	  		}
+				.content { padding-top:0; }
+				.embed iframe {
+					margin: 10px 0;
+				}
+				.asset-size-l .embed iframe {
+					margin: 10px 0;
+				}
+
+
+			  .asset-size-s {
+					width:215px;
+					img { position: relative; /* left:-25px; top: -25px; */ }
+				}
+			  .asset-size-m {
+					width:330px;
+					img { position: relative; /* left:-25px; bottom: -29px; */ }
+				}
+				.asset-size-l {
+					width:675px;
+				}
+
+				.asset.asset-size-l.asset-type-imagegroup {
+					width:675px;
+
+          background: transparent none;
+
+
+          .asset-inner {
+            background:transparent url("@{base-url}/images/asset-bg.png");
+          }
+					.content {
+						padding-top:0
+					}
+					.asset-content{
+						/* float: left; */
+						margin:0;
+						padding: 0px 0px 0px 110px;
+					}
+					img {
+						float: left;
+						padding-right:10px;
+					}
+					.asset-title {
+					}
+
+				}
+			}
+
+			#sidebar-region {
+				color:#222; width:235px; margin-right:20px; float: right; padding: 0;
+				a { color:#042c36; }
+				.asset {
+					background: #f6f6f6; .gradient(#f6f6f6, #fff, #DDD); padding:0 0 0 0; margin-bottom: 15px; text-align: center; font-weight: 400; /* border:1px solid #333; */
+				}
+				.asset-content { padding-left: 15px; }
+				.asset-title {
+					padding-top:10px;
+					color:#042c36;
+
+					a { color:#042c36; }
+				}
+				.asset-type-text {
+					padding:0 0px 15px 0;
+				}
+        .embed {
+          .clearfix();
+          margin: 10px 0;
+        }
+				.embed iframe {
+					float: left;
+				}
+				.documents {
+					padding:0 0px 15px 0;
+				}
+			  .asset-title, .description {
+			  	padding-left: 20px;
+			  	padding-right: 20px;
+			  }
+			  .asset-size-1 {
+			  	.asset-title { border: 0; }
+		  	}
+
+
+			}
+		 }
+
+  	#footer-region {
+  		 color: #fff; font-size:12px; line-height: 1.2em;
+       clear: both;
+
+  		.asset { width:185px;}
+  		.asset-title { font-family:'Open Sans', sans-serif; border:0; color: #fff; font-size:12px; padding:0; margin:0;  line-height: 1.2em;}
+  		.asset-type-text .asset-inner { padding: 0; }
+  		a { color: #fff; }
+
+  	}
+
+  	.content ul {
+  		list-style: disc; margin: 0.5em 0 1em 2em;
+
+	  	li { list-style: disc; }
+  	}
+
+	#footer-container { background:transparent url("@{base-url}/images/asset-bg.png"); padding:25px !important; width: 890px; }
+
+	a {
+		color: @accent-color; text-decoration: underline;
+		&:hover {color: lighten(@accent-color,25); text-decoration: underline;}
+	}
+	b,strong { font-weight:700; }
+	.content ol, .content ul { list-style:disc; margin-left: 20px; }
+	.region { padding:0; }
+
+	.columnizer-row { margin-bottom: 0em; }
+	.columnizer-col, .columnizer-col2, .columnizer-col3, .columnizer-col4, .columnizer-col5, .columnizer-col5 {margin-right:0; margin-left: 0;}
+
+  #pop-title, .asset-title { font-family: @headline-font-family; font-weight: @headline-font-weight; letter-spacing: -0.05em; color: @accent-color; line-height: 1em;  padding: 0.15em 0 .35em; }
+  #pop-title { font-size: 36px; background:transparent url("@{base-url}/images/asset-bg.png"); padding:15px; width: 645px; margin-bottom: 12px;}
+  .asset-title  { font-size:30px; line-height:1em; padding: 0 0 0.15em 0; margin: 0 0 0.15em 0;  }
+
+	.asset-inner { padding: 0 0 0px 0; }
+	.asset-content {
+    padding: 0px 15px ;
+    .asset-title { padding-top:10px; }
+    .description { padding-bottom:15px; }
+  }
+  .asset .content { margin:0 0 0; padding:0; position: relative; }
+  .first .asset .content, .first .asset .asset-content { padding-left:0; }
+
+
+
+	.playlist { float:right; position: absolute; top: 10px; right: 10px;
+		li { display: inline-block; }
+		li a img { display: inline-block; width:25px; height:25px; border: 1px solid #777;}
+	}
+
+
+video, .embed, img { display: block; }
+
+
+	.filesize { color:fade(@text-color,50%); font-size: .85em;}
+
+	.file-extension {
+		display: block;
+		width: 16px;
+		height: 16px;
+		text-indent: -9999px;
+	  margin-right: 5px;
+	  margin-bottom: 0px;
+		background: transparent url("@{base-url}/images/file-icons.png") no-repeat -64px -112px;
+	}
+
+
+	@sprite-cols: 10;
+	@sprite-width: 16px;
+	@sprite-height: 20px;
+	@filetypes: "['file','zip','xls','wps','wpd','wmv','wma','wav','vob','vcd','txt','ttf','torrent','tif','tgz','swf','ss','sql','sitx','sit','ses','sea','rtf','rmvb','rm','rar','ram','qxd','qbw','qbb','pub','ptb','pst','psd','ps','ppt','pps','png','pdf','ogg','msi','mpg','mpeg','mp4','mp3','mp2','mov','mid','mdb','mcd','m4v','m4p','m4b','m4a','log','lnk','jpg','jpeg','jar','iso','indd','ifo','html','htm','hqx','gz','gif','flv','fla','exe','eps','eml','dwg','dvf','dss','doc','dmg','dll','divx','dat','chm','cdr','cdl','cda','cbr','cab','bup','bmp','bin','bat','avi','asx','asf','amr','aiff','aif','ai','ace','7z','3gp']";
+	@filetypes-length: ~`eval(@{filetypes}).length`;
+	.file-extensions(@index) when (@index > 0) {
+	  (~".file-extension-`eval(@{filetypes})[@{index} - 1]`") {
+	    background-position: ~`(((@{index} - @{filetypes-length}) % @{sprite-cols}) * parseInt("@{sprite-width}", 10)) + "px"` ~`((Math.ceil((@{index} - @{filetypes-length}) / @{sprite-cols})) * parseInt("@{sprite-height}", 10)) + "px"`;
+	  }
+	  .file-extensions(@index - 1);
+	}
+	.file-extensions(0) {}
+
+	.file-extensions(100);  //we should be able to just reference filetypes-length, but there is a bug in less
+
+
+
+	.asset-size-1 {
+
+		.asset-title { font-size:28px; }
+	}
+
+	.documents a {
+		display: inline-block;
+		vertical-align: top;
+		padding: 10px 5px;
+		text-align: center;
+		margin: 0;
+		height: auto;
+		.border-radius(3px, 3px, 3px, 3px);
+		width: 90px;
+	}
+
+	.documents a:hover { background: rgba(255, 255, 255, 0.1); color: darken(#00BEEE,10); text-decoration: underline; }
+
+	.file-extension { display: block; margin: 0 auto 10px; }
+	.file-title { display: block; text-transform: capitalize; font-size: .85em; line-height: 1.3em;}
+	.filesize { display: block; font-size: .85em; }
+
+	.asset-type-text .asset-inner, .asset-type-documentgroup .asset-inner { padding: 10px 15px 15px; }
+	.asset-type-imagegroup.asset-size-l .asset-inner { padding: 15px 15px 15px; }
+
+	 .file-extension {
+/*     display: inline-block; */
+    width: 32px;
+    height: 32px;
+    text-indent: -9999px;
+    vertical-align: middle;
+    background: transparent url("@{base-url}/images/file-icons-lg.png") no-repeat -128px -224px;
+    &.file-extension-3gp { background-position: 0px 0px; }
+    &.file-extension-7z { background-position: -32px 0px; }
+    &.file-extension-ace { background-position: 0px -32px; }
+    &.file-extension-ai { background-position: -32px -32px; }
+    &.file-extension-aif { background-position: -64px 0px; }
+    &.file-extension-aiff { background-position: -64px -32px; }
+    &.file-extension-amr { background-position: 0px -64px; }
+    &.file-extension-asf { background-position: -32px -64px; }
+    &.file-extension-asx { background-position: -64px -64px; }
+    &.file-extension-bat { background-position: -96px 0px; }
+    &.file-extension-bin { background-position: -96px -32px; }
+    &.file-extension-bmp { background-position: -96px -64px; }
+    &.file-extension-bup { background-position: 0px -96px; }
+    &.file-extension-cab { background-position: -32px -96px; }
+    &.file-extension-cbr { background-position: -64px -96px; }
+    &.file-extension-cda { background-position: -96px -96px; }
+    &.file-extension-cdl { background-position: -128px 0px; }
+    &.file-extension-cdr { background-position: -128px -32px; }
+    &.file-extension-chm { background-position: -128px -64px; }
+    &.file-extension-dat { background-position: -128px -96px; }
+    &.file-extension-divx { background-position: 0px -128px; }
+    &.file-extension-dll { background-position: -32px -128px; }
+    &.file-extension-dmg { background-position: -64px -128px; }
+    &.file-extension-doc { background-position: -96px -128px; }
+    &.file-extension-docx { background-position: -96px -128px; }
+    &.file-extension-dss { background-position: -128px -128px; }
+    &.file-extension-dvf { background-position: -160px 0px; }
+    &.file-extension-dwg { background-position: -160px -32px; }
+    &.file-extension-eml { background-position: -160px -64px; }
+    &.file-extension-eps { background-position: -160px -96px; }
+    &.file-extension-exe { background-position: -160px -128px; }
+    &.file-extension-fla { background-position: 0px -160px; }
+    &.file-extension-flv { background-position: -32px -160px; }
+    &.file-extension-gif { background-position: -64px -160px; }
+    &.file-extension-gz { background-position: -96px -160px; }
+    &.file-extension-hqx { background-position: -128px -160px; }
+    &.file-extension-htm { background-position: -160px -160px; }
+    &.file-extension-html { background-position: -192px 0px; }
+    &.file-extension-ifo { background-position: -192px -32px; }
+    &.file-extension-indd { background-position: -192px -64px; }
+    &.file-extension-iso { background-position: -192px -96px; }
+    &.file-extension-jar { background-position: -192px -128px; }
+    &.file-extension-jpeg { background-position: -192px -160px; }
+    &.file-extension-jpg { background-position: 0px -192px; }
+    &.file-extension-lnk { background-position: -32px -192px; }
+    &.file-extension-log { background-position: -64px -192px; }
+    &.file-extension-m4a { background-position: -96px -192px; }
+    &.file-extension-m4b { background-position: -128px -192px; }
+    &.file-extension-m4p { background-position: -160px -192px; }
+    &.file-extension-m4v { background-position: -192px -192px; }
+    &.file-extension-mcd { background-position: -224px 0px; }
+    &.file-extension-mdb { background-position: -224px -32px; }
+    &.file-extension-mid { background-position: -224px -64px; }
+    &.file-extension-mov { background-position: -224px -96px; }
+    &.file-extension-mp2 { background-position: -224px -128px; }
+    &.file-extension-mp4 { background-position: -224px -160px; }
+    &.file-extension-mpeg { background-position: -224px -192px; }
+    &.file-extension-mpg { background-position: 0px -224px; }
+    &.file-extension-msi { background-position: -32px -224px; }
+    &.file-extension-mswmm { background-position: -64px -224px; }
+    &.file-extension-ogg { background-position: -96px -224px; }
+    &.file-extension-page_white { background-position: -128px -224px; }
+    &.file-extension-pdf { background-position: -160px -224px; }
+    &.file-extension-png { background-position: -192px -224px; }
+    &.file-extension-pps { background-position: -224px -224px; }
+    &.file-extension-ps { background-position: -256px 0px; }
+    &.file-extension-psd { background-position: -256px -32px; }
+    &.file-extension-pst { background-position: -256px -64px; }
+    &.file-extension-ptb { background-position: -256px -96px; }
+    &.file-extension-pub { background-position: -256px -128px; }
+    &.file-extension-qbb { background-position: -256px -160px; }
+    &.file-extension-qbw { background-position: -256px -192px; }
+    &.file-extension-qxd { background-position: -256px -224px; }
+    &.file-extension-ram { background-position: 0px -256px; }
+    &.file-extension-rar { background-position: -32px -256px; }
+    &.file-extension-rm { background-position: -64px -256px; }
+    &.file-extension-rmvb { background-position: -96px -256px; }
+    &.file-extension-rtf { background-position: -128px -256px; }
+    &.file-extension-sea { background-position: -160px -256px; }
+    &.file-extension-ses { background-position: -192px -256px; }
+    &.file-extension-sit { background-position: -224px -256px; }
+    &.file-extension-sitx { background-position: -256px -256px; }
+    &.file-extension-ss { background-position: -288px 0px; }
+    &.file-extension-swf { background-position: -288px -32px; }
+    &.file-extension-tgz { background-position: -288px -64px; }
+    &.file-extension-thm { background-position: -288px -96px; }
+    &.file-extension-tif { background-position: -288px -128px; }
+    &.file-extension-tmp { background-position: -288px -160px; }
+    &.file-extension-torrent { background-position: -288px -192px; }
+    &.file-extension-ttf { background-position: -288px -224px; }
+    &.file-extension-txt { background-position: -288px -256px; }
+    &.file-extension-vcd { background-position: 0px -288px; }
+    &.file-extension-vob { background-position: -32px -288px; }
+    &.file-extension-wav { background-position: -64px -288px; }
+    &.file-extension-wma { background-position: -96px -288px; }
+    &.file-extension-wmv { background-position: -128px -288px; }
+    &.file-extension-wps { background-position: -160px -288px; }
+    &.file-extension-xls { background-position: -192px -288px; }
+    &.file-extension-xlsx { background-position: -192px -288px; }
+    &.file-extension-xpi { background-position: -224px -288px; }
+    &.file-extension-zip { background-position: -256px -288px; }
+  }
+
+	.top.hr-shadow { top: -28px;	position: relative; height: 40px;}
+
+	.nivo-directionNav { display: block !important; }
+
+	.prev, .next {
+		display:none !important;
+		width: 30px;
+		height: 30px;
+		background: url("@{base-url}/images/arrows.png") no-repeat;
+		text-indent: -9999px;
+		border: 0;
+		top: 50%;
+	position: absolute;
+	z-index: 100;
+	}
+
+.next {
+	background-position: -30px 0;
+	right: 10px;
+}
+
+.prev {
+	left: 10px;}
+
+
+
+	#social {
+		padding: 5px 0 0 0;
+		height: 35px;
+
+		li a {
+			display: block;
+			text-indent: -10000em;
+			width: 32px;
+			height: 32px;
+			float: left;
+			background: url("@{base-url}/images/social-icons.png") no-repeat;
+
+		&.facebook { background-position: -127px -110px; }
+		&.facebook:hover { background-position: -127px -73px; }
+		&.linkedin { background-position: -86px -208px; }
+		&.linkedin:hover { background-position: -86px -171px; }
+		&.twitter { background-position: -86px -110px; }
+		&.twitter:hover { background-position: -86px -73px; }
+		&.wordpress { background-position: -371px -111px; }
+		&.wordpress:hover { background-position: -371px -74px; }
+		&.youtube { background-position: -330px -111px; }
+		&.youtube:hover { background-position: -330px -74px; }
+		&.dribbble { background-position: -167px -111px; }
+		&.dribbble:hover { background-position: -167px -74px; }
+		}
+	}
+
+
+	.asset:hover .aloha-editable { background:rgba(231,231,231,0.1); .border-radius(3px,3px,3px,3px);}
+
+.asset-inner .content { .clearfix(); }
